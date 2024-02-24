@@ -1,17 +1,20 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_responsiveness_tutorial/check_email.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// void main() => runApp(
-//       DevicePreview(
-//         enabled: !kReleaseMode,
-//         builder: (context) => MyApp(), // Wrap your app
-//       ),
-//     );
-void main() {
-  runApp(const MyApp());
-}
+import 'home_screen.dart';
+
+void main() => runApp(
+      DevicePreview(
+        enabled: !kReleaseMode,
+        builder: (context) => MyApp(), // Wrap your app
+      ),
+    );
+// void main() {
+//   runApp(const MyApp());
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -28,13 +31,12 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return MaterialApp(
-            // locale: DevicePreview.locale(context),
-            // builder: DevicePreview.appBuilder,
-            theme:
-                ThemeData(appBarTheme: AppBarTheme(color: Colors.deepPurple)),
-            home: CheckEmail()
-            // HomeScreen(),
-            );
+          locale: DevicePreview.locale(context),
+          builder: DevicePreview.appBuilder,
+          theme: ThemeData(appBarTheme: AppBarTheme(color: Colors.deepPurple)),
+          home: HomeScreen(),
+          // CheckEmail()// uncomment this code for screen util practice
+        );
       },
     );
   }
